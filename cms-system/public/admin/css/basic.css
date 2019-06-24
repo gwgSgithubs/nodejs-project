@@ -1,0 +1,26 @@
+.login-layout{
+  background: #428bca;
+}
+.login-layout .widget-box{
+  background-color:#428bca;
+}
+.login-layout .widget-box .widget-main{
+  padding:26px 16px;
+}
+.login-container{
+  padding-top: 80px;
+}
+.header{
+  margin-top:0px;
+  padding-bottom: 12px;
+}
+
+.form-horizontal .form-group{
+  height: 44px;
+}
+.sort_input {
+  width: 40px;
+}
+.img {
+  height: 100px;
+}

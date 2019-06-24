@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>麦田网</title>
+	<link rel="stylesheet" type="text/css" href="default/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/index.css" />
+<link rel="stylesheet" type="text/css" href="default/css/heder_nav-menu.css" />
+<link rel="stylesheet" type="text/css" href="default/css/successful_case.css"/>
+<link rel="stylesheet" type="text/css" href="default/css/bootstrap.min.css"/>
+</head>
+
+<body>
+{{ include 'default/public/nav_top.html'}}
+<div id="header_nav-wrapper">
+    <div class="header_nav">
+    	<h2>成功案例 &#160; <span>用心给客户书写出一次次满意的答卷，创造有价值的产品
+APP开发</span></h2>
+
+
+    </div>
+
+
+
+</div>
+
+<div id="header_title-wrapper">
+
+    <div class="header_title clear">
+        <p >
+			{{each list}}
+        <a class="{{if pid == $value._id}} active {{/if}}" href="/case?id={{@$value._id}}">{{$value.title}}</a>
+		  {{/each}}
+        <!-- <a href="#">教育行业</a>
+        <a href="#">房地产业</a>
+        <a href="#" style="margin-right:20px;">能源行业</a> -->
+
+        </p>
+    </div>
+
+
+</div>
+
+
+<div id="main_wrapper">
+
+
+    <div class="main">
+	    <ul class="clear">
+				{{each listDetail}}
+		    <li>
+		    		<a href="/content/{{@$value._id}}"><img src="{{$value.img_url}}" /></a>
+		    		<p>{{$value.title}}</p>
+		    </li>
+				{{/each}}
+
+	    </ul>
+
+
+    </div>
+
+	<div id="page" class="pagination"></div>
+
+
+</div>
+{{ include 'default/public/footer.html'}}
+<script src="default/js/jquery-2.0.3.min.js"></script>
+<script src="default/js/jqPaginator.js"></script>
+<script>
+	$('#page').jqPaginator({
+		totalPages: {{totalPages}},
+		visiblePages: 4,
+		currentPage: {{page}},
+		onPageChange: function (num, type) {
+			console.log(num, type);
+			if(type=='change'){
+				{{if pid}}
+				location.href="/case?page="+num + '&id={{pid}}';
+				{{else}}
+				location.href="/case?page="+num;
+				{{/if}}
+			}
+		}
+	});
+
+</script>
+</body>
+</html>

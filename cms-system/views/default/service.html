@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>麦田网</title>
+	<link rel="stylesheet" type="text/css" href="default/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/common.css" />
+  <link rel="stylesheet" type="text/css" href="default/css/index.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/heder_nav-menu.css" />
+
+<link rel="stylesheet" type="text/css" href="default/css/service.css"/>
+</head>
+
+<body>
+
+{{ include 'default/public/nav_top.html'}}
+<div id="header_nav-wrapper">
+    <div class="header_nav">
+    <h2>尊享服务&#160; <span>IT营将为您提供以下服务致力为您提供优质产品，同时也是市场竞争必胜的保证! 互联网+</span></h2>
+  </div>
+</div>
+<div id="header_title-wrapper">
+
+    <div class="header_title clear">
+        <p >
+        <a href="#">服务优势</a>
+        <a href="#">服务范畴</a>
+        </p>
+    </div>
+
+
+</div>
+
+<div id="main-wrapper">
+
+    <div class="main">
+
+    		<ul class="clear">
+				{{each serviceList}}
+				<li class="service">
+					<a href="/content/{{@$value._id}}">
+						<img src="{{$value.img_url}}"/>
+						<h3>{{$value.title}}</h3>
+					</a>
+				</li>
+				{{/each}}
+
+			</ul>
+
+    </div>
+
+
+
+
+</div>
+
+
+
+
+{{ include 'default/public/footer.html'}}
+
+
+</body>
+</html>

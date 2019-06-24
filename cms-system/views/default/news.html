@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>麦田网</title>
+	<link rel="stylesheet" type="text/css" href="default/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="default/css/index.css" />
+<link rel="stylesheet" type="text/css" href="default/css/heder_nav-menu.css" />
+<link rel="stylesheet" type="text/css" href="default/css/successful_case.css"/>
+<link rel="stylesheet" type="text/css" href="default/css/bootstrap.min.css"/>
+</head>
+
+<body>
+{{ include 'default/public/nav_top.html'}}
+<div id="header_nav-wrapper">
+    <div class="header_nav">
+    	<h2>成功案例 &#160; <span>让品牌与您同在</span></h2>
+    </div>
+</div>
+<div id="header_title-wrapper">
+
+    <div class="header_title clear">
+        <p>
+					{{each list}}
+        		<a href="/news?id={{@$value._id}}">{{$value.title}}</a>
+        	{{/each}}
+
+        </p>
+    </div>
+
+
+</div>
+
+
+<div id="main_wrapper">
+
+
+    <div class="main">
+	    <ul class="clear">
+				{{each content}}
+			    <li>
+			    		<a href="/content/{{@$value._id}}"><img src="{{$value.img_url}}" /></a>
+			    		<p>{{$value.description}}</p>
+			    </li>
+				{{/each}}
+	    </ul>
+
+
+    </div>
+
+	<div id="page" class="pagination"></div>
+
+
+</div>
+
+
+
+{{ include 'default/public/footer.html'}}
+
+<script src="default/js/jquery-2.0.3.min.js"></script>
+<script src="default/js/jqPaginator.js"></script>
+<script>
+	$('#page').jqPaginator({
+		totalPages: {{totalPages}},
+		visiblePages: 4,
+		currentPage: {{page}},
+		onPageChange: function (num, type) {
+			console.log(num, type);
+			if(type=='change'){
+				{{if pid}}
+				location.href="/news?page="+num + '&id={{pid}}';
+				{{else}}
+				location.href="/news?page="+num;
+				{{/if}}
+			}
+		}
+	});
+
+</script>
+
+
+</body>
+</html>
